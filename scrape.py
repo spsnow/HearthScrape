@@ -14,10 +14,10 @@ while True:
     subreddit = r.get_subreddit('hearthstone')
     for submission in subreddit.get_new(limit=20):
         if submission.id not in already_done:
+            print 'Parsing new post: ' + submission.short_link
             key = keyRE.findall(submission.selftext.lower())
             for s in key:
-                print s
-                print submission.short_link
+                print 'FOUND A KEY: ' + s
             already_done.append(submission.id)
     time.sleep(10)
 
